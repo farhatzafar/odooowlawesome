@@ -13,10 +13,10 @@ export class TodoList extends Component {
         this.index = 0;
         useAutofocus("input");
     }
-}
 
-addTodo(ev) {
-    if (ev.keyCode === 13 && ev.target.value != "") {
+
+    addTodo(ev) {
+        if (ev.keyCode === 13 && ev.target.value != "") {
             this.todos.push({
                 id: this.index++,
                 description: ev.target.value,
@@ -24,11 +24,19 @@ addTodo(ev) {
             });
             ev.target.value = "";
         }
-}
+    }
 
-toggleTodo(todoId) {
+    toggleTodo(todoId) {
         const todo = this.todos.find((todo) => todo.id === todoId);
         if (todo) {
             todo.isCompleted = !todo.isCompleted;
         }
     }
+
+    removeTodo(todoId) {
+        const todoIndex = this.todos.findIndex((todo) => todo.id === todoId);
+        if (todoIndex >= 0) {
+            this.todos.splice(todoIndex, 1);
+        }
+    }
+}
