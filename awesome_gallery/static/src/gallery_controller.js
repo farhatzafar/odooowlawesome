@@ -8,6 +8,7 @@ export class GalleryController extends Component {
 
     static props = {
         ...standardViewProps,
+        archInfo: Object,
     };
 
     static components = { Layout };
